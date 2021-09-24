@@ -1,5 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import { mode } from '@chakra-ui/theme-tools';
+import blogPostCSS from "./blog-post";
 
 // theme.js
 // source: https://material.io/design/color/dark-theme.html
@@ -12,10 +13,11 @@ const theme = extendTheme({
       body: {
         bg: mode('light.ghost', '#121212')(props)
       },
+      ...blogPostCSS(mode, props),
+      ".chakra-breadcrumb__link:hover": {
+        textDecoration: "none"
+      },
     }),
-    ".chakra-breadcrumb__link:hover": {
-      textDecoration: "none"
-    },
   },
   components: {
     Button: {
@@ -71,11 +73,13 @@ const theme = extendTheme({
     light: {
       primary: "white",
       secondary: "#2F5393",
+      secondaryTextColor: "#616161",
       ghost: "#f5f5f5"
     },
     dark: {
       primary: "#121212",
       secondary: "#67A9ED",
+      secondaryTextColor: "#b3b3b3",
     },
     // ...
   },
