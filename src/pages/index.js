@@ -22,25 +22,72 @@ export default function Home() {
           <AccordionItem id="accordion">
             <AccordionButton>🐱 Read more</AccordionButton>
             <AccordionPanel>
-              Back in the days, I used computers for playing OG Flash games. Enter 2017,
-              never thought that I could program my computer to build such things myself!
+              I keep a keen fascination in 🌌astronomy and love to know about the secrets of the
+              universe. Wondering at the nightsky randomly makes me wonder in awe at how
+              beautiful the celestial universe actually, keeping in mind we cant see most of it.{' '}
+              <i>{`"Somewhere, something incredible is waiting to be known.  -- Carl Sagan"`}</i>
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
-        <Link href="/work" passHref>
-          <Text cursor="pointer" className={clsx(
-            [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-          )}>
-            /work
+        <Box mt="6vh">
+          <Link href="/work" passHref>
+            <Text fontSize="lg" cursor="pointer" className={clsx(
+              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+            )}>
+              /work
+            </Text>
+          </Link>
+          <Text>
+            👨‍💻 Presently, I work as a associate software engineer at <a className={clsx(
+              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+            )} target="blank" href="https://www.redhat.com/en">Redhat</a>
           </Text>
-        </Link>
-        <Link href="/posts" passHref>
-          <Text cursor="pointer" className={clsx(
-            [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-          )}>
-            /posts
+          <Text>🔧 Building virtualbook, important jot-downs to never forget again</Text>
+          <Text>👨‍🎓 Mentor at Google Summer of code 2021</Text>
+        </Box>
+        <Box mt="6vh">
+          <Link href="/posts" passHref>
+            <Text fontSize="lg" cursor="pointer" className={clsx(
+              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+            )}>
+              /posts
+            </Text>
+          </Link>
+          <Text>
+            Most of my articles are based upon my experience with using a tool or a framework.
+            Here are some of my most recent ideas.
           </Text>
-        </Link>
+        </Box>
+        <Box mt="6vh">
+          <Link href="/journal" passHref>
+            <Text fontSize="lg" cursor="pointer" className={clsx(
+              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+            )}>
+              /mood-board
+            </Text>
+          </Link>
+          <Text>
+            I occasionally like to publish my thoughts and enjoy taking some time to
+            think about how we work, live and interact.
+          </Text>
+        </Box>
+        <Box mt="6vh">
+          <Link href="/projects" passHref>
+            <Text fontSize="lg" cursor="pointer" className={clsx(
+              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+            )}>
+              /projects
+            </Text>
+          </Link>
+          <Text>
+            Building tools for humans to use. I feel that I am deeply connected to my projects,
+            each of them has helped me achieve a particular strata of learning and fun.
+          </Text>
+        </Box>
+        <Box my={8}>
+          <Text fontSize="lg">🤙 {`Let's`} have a chat</Text>
+          <Text></Text>
+        </Box>
       </Box>
     </Box>
   )
