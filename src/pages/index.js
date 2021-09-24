@@ -6,7 +6,6 @@ import { Box, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel } 
 import PageLayout from '../layouts/PageLayout'
 
 export default function Home() {
-  console.log(process.cwd())
   return (
     <Box>
       <Head>Home | Aquib Baig</Head>

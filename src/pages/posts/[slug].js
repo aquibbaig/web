@@ -30,12 +30,12 @@ export default function PostPage({ source, frontMatter }) {
       <header>
         <nav>
           <Link href="/posts">
-            <a>👈 Go back home</a>
+            <a>👈 Go back</a>
           </Link>
         </nav>
       </header>
       <Box className="post-header" my="2rem">
-        <Text fontSize="2xl">{frontMatter.title}</Text>
+        <Text fontSize="2xl">📓 {frontMatter.title}</Text>
         {frontMatter.description && (
           <Text color={descriptionCol}>{frontMatter.description}</Text>
         )}

@@ -4,6 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 import Link from 'next/link'
+import _ from 'lodash'
 
 export default function Posts({ posts })  {
   return (
@@ -36,5 +37,7 @@ export function getStaticProps() {
     }
   })
 
-  return { props: { posts } }
+  const sortedPosts = _.reverse(_.sortBy(posts, (post) => post.data.publishedOn))
+
+  return { props: { posts: sortedPosts } }
 }

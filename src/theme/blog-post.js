@@ -1,7 +1,6 @@
 const blogPostCSS = (mode, props) => ({
   ".post-body": {
     color: mode('light.secondaryTextColor', 'dark.secondaryTextColor')(props),
-    textAlign: 'justify'
   },
   ".post-body > h1, .post-body > h2": {
     margin: '1.5rem 0 0 0'
@@ -9,7 +8,7 @@ const blogPostCSS = (mode, props) => ({
   ".post-body > ul, .post-body > ol": {
     paddingLeft: "30px"
   },
-  ".post-body > p > a, .post-body > ol >  li > p > a, .post-body > ul >  li > p > a": {
+  ".post-body > p > a, .post-body > ol >  li > p > a, .post-body > ul >  li > p > a, .post-body > ol >  li > a": {
     textDecoration: 'underline',
     textDecorationColor: mode("#cecece", "#cecece")(props)
   },
