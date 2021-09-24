@@ -6,6 +6,7 @@ import { Box, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel } 
 import PageLayout from '../layouts/PageLayout'
 
 export default function Home() {
+  console.log(process.cwd())
   return (
     <Box>
       <Head>Home | Aquib Baig</Head>
@@ -32,6 +33,13 @@ export default function Home() {
             [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
           )}>
             /work
+          </Text>
+        </Link>
+        <Link href="/posts" passHref>
+          <Text cursor="pointer" className={clsx(
+            [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+          )}>
+            /posts
           </Text>
         </Link>
       </Box>

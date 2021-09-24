@@ -7,15 +7,15 @@ import {
 import { ColorModeSwitcher } from '../utils/themeswitch'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { getBreadcrumbsFromPath, isCurrentPage } from '../utils/utils'
+import { getBreadcrumbsFromPath, isCurrentPage, trim } from '../utils/utils'
 
 const PageLayout = (props) => {
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
   const [crumbs, setCrumbs] = useState([]);
 
   useEffect(() => {
-    setCrumbs(getBreadcrumbsFromPath(pathname));
-  }, [pathname])
+    setCrumbs(getBreadcrumbsFromPath(asPath));
+  }, [asPath])
 
   return (
     <Box
@@ -33,11 +33,11 @@ const PageLayout = (props) => {
           {crumbs.map(item => (
             <BreadcrumbItem key={item.route}>
                 <Box
-                  pointerEvents={!isCurrentPage(item.route, pathname) && 'none'}
-                  color={isCurrentPage(item.route, pathname) ? "#939393": "normal"
+                  pointerEvents={!isCurrentPage(item.route, asPath) && 'none'}
+                  color={isCurrentPage(item.route, asPath) ? "#939393": "normal"
                 }>
                   <Link href={item.route} passHref>
-                    {item.name}
+                    {trim(item.name, 20)}
                   </Link>
               </Box>
             </BreadcrumbItem>

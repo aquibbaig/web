@@ -33,7 +33,7 @@ export const isCurrentPage = (route, pathName) => {
   const pathcrumbs = pathName.split('/')
   const finalPath = `/${pathcrumbs[pathcrumbs.length-1]}`
 
-  if (finalPath === route) return false
+  if (route.endsWith(finalPath)) return false
 
   return true
 }
@@ -53,8 +53,8 @@ export const getBreadcrumbsFromPath = (pathName) => {
       arr.push(
         {
           name: val.length < 32 ?
-            urlParser(val.charAt(0).toUpperCase() + val.slice(1))
-            : trim(urlParser(val.charAt(0).toUpperCase() + val.slice(1)).slice(0, val.length-32), 20),
+            urlParser(val)
+            : trim(urlParser(val).slice(0, val.length-32), 20),
           route: accumulator.slice(1)
         }
       );
