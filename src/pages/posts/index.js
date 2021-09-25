@@ -6,14 +6,17 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 import Link from 'next/link'
 import _ from 'lodash'
 import { Box, List, ListItem } from '@chakra-ui/react'
+import { blogPostRandom } from '../../utils/randomEmoji'
 
 export default function Posts({ posts })  {
+  posts.map(post => console.log(post.filePath%2))
   return (
     <PageLayout>
       <Box p={2}>
         <List>
           {posts.map((post) => (
-            <ListItem key={post.filePath}>
+            <ListItem key={post.filePath} d="flex">
+              {blogPostRandom(post.filePath)}
               <Link
                 as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
                 href={`/posts/[slug]`}
