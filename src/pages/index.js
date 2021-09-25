@@ -2,7 +2,14 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { Box, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@chakra-ui/react'
+import {
+    Box,
+    Text,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+} from '@chakra-ui/react'
 import PageLayout from '../layouts/PageLayout'
 
 export default function Home() {
@@ -24,7 +31,8 @@ export default function Home() {
             <AccordionPanel>
               I keep a keen fascination in 🌌astronomy and love to know about the secrets of the
               universe. Wondering at the nightsky randomly makes me wonder in awe at how
-              beautiful the celestial universe actually, keeping in mind we cant see most of it.{' '}
+              beautiful the celestial universe actually is, keeping in mind we can only
+              see some of it.{' '}
               <i>{`"Somewhere, something incredible is waiting to be known.  -- Carl Sagan"`}</i>
             </AccordionPanel>
           </AccordionItem>
@@ -59,19 +67,6 @@ export default function Home() {
           </Text>
         </Box>
         <Box mt="6vh">
-          <Link href="/journal" passHref>
-            <Text fontSize="lg" cursor="pointer" className={clsx(
-              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-            )}>
-              /mood-board
-            </Text>
-          </Link>
-          <Text>
-            I occasionally like to publish my thoughts and enjoy taking some time to
-            think about how we work, live and interact.
-          </Text>
-        </Box>
-        <Box mt="6vh">
           <Link href="/projects" passHref>
             <Text fontSize="lg" cursor="pointer" className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
@@ -86,7 +81,19 @@ export default function Home() {
         </Box>
         <Box my={8}>
           <Text fontSize="lg">🤙 {`Let's`} have a chat</Text>
-          <Text></Text>
+          <Text>
+            I am always happy to talk about working together in amazing ideas, opportunity or just
+            a casual conversation. If {`you'd`} like to get in touch, shoot me an email below.
+          </Text>
+          <Box mt={4}>
+            <Link href="mailto:aquibbaig97@gmail.com" passHref>
+              <Text fontSize="md" cursor="pointer" className={clsx(
+                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+              )}>
+                Send an email
+              </Text>
+            </Link>
+          </Box>
         </Box>
       </Box>
     </Box>
