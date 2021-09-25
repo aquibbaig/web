@@ -1,7 +1,4 @@
 const blogPostCSS = (mode, props) => ({
-  ".post-body": {
-    color: mode('light.secondaryTextColor', 'dark.secondaryTextColor')(props),
-  },
   ".post-body > h1, .post-body > h2": {
     margin: '1.5rem 0 0 0'
   },
