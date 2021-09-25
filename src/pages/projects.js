@@ -16,7 +16,10 @@ import PageLayout from '../layouts/PageLayout'
 export default function Projects() {
     return (
         <Box>
-            <Head>Projects | Aquib Baig</Head>
+            <Head>
+                <title>Projects | Aquib Baig</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Box className="pinned" d="flex" my="4vh" pl={1}>
                 📌
                 <Text>Work In Progress, virtualbook</Text>

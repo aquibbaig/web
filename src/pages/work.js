@@ -16,7 +16,10 @@ import PageLayout from '../layouts/PageLayout'
 export default function Work() {
     return (
         <Box>
-            <Head>Work | Aquib Baig</Head>
+            <Head>
+                <title>Work | Aquib Baig</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Box className="pinned" d="flex" my="4vh" pl={1}>
                 📌
                 <Text>Associate Software Engineer, Redhat</Text>

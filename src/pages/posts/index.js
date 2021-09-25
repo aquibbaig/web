@@ -4,6 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 import Link from 'next/link'
+import Head from 'next/head'
 import _ from 'lodash'
 import { Box, List, ListItem } from '@chakra-ui/react'
 import { blogPostRandom } from '../../utils/randomEmoji'
@@ -13,6 +14,10 @@ export default function Posts({ posts })  {
   return (
     <PageLayout>
       <Box p={2}>
+        <Head>
+          <title>Posts | Aquib Baig</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         <List>
           {posts.map((post) => (
             <ListItem key={post.filePath} d="flex">

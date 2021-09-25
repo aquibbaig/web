@@ -15,7 +15,10 @@ import PageLayout from '../layouts/PageLayout'
 export default function Home() {
   return (
     <Box>
-      <Head>Home | Aquib Baig</Head>
+      <Head>
+        <title>Home | Aquib Baig</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Box className="intro" fontSize="md">
         <Text>
           Hey, {`I'm`} Aquib! I design {'&'} build digital products.

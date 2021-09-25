@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../theme/theme'
-import PageLayout from '../layouts/PageLayout'
 import "prismjs/themes/prism-tomorrow.css";
 
 function MyApp({ Component, pageProps }) {

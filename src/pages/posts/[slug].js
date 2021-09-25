@@ -28,6 +28,10 @@ export default function PostPage({ source, frontMatter }) {
   const descriptionCol = useColorModeValue("light.secondaryTextColor", "dark.secondaryTextColor")
   return (
     <PageLayout>
+      <Head>
+        <title>{`${frontMatter.title}`} | Aquib Baig</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <header>
         <nav>
           <Link href="/posts">
