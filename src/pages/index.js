@@ -48,13 +48,17 @@ export default function Home() {
               /work
             </Text>
           </Link>
-          <Text>
-            👨‍💻 Presently, I work as a associate software engineer at <a className={clsx(
+          <Box d="flex">
+            👨‍💻 <Text>Presently, I work as a associate software engineer at <a className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-            )} target="blank" href="https://www.redhat.com/en">Redhat</a>
-          </Text>
-          <Text>🔧 Building virtualbook, important jot-downs to never forget again</Text>
-          <Text>👨‍🎓 Mentor at Google Summer of code 2021</Text>
+            )} target="blank" href="https://www.redhat.com/en">Redhat</a></Text>
+          </Box>
+          <Box d="flex">
+            🔧 <Text>Building virtualbook, important jot-downs to never forget again</Text>
+          </Box>
+          <Box d="flex">
+            👨‍🎓 <Text>Mentor at Google Summer of code 2021</Text>
+          </Box>
         </Box>
         <Box mt="6vh">
           <Link href="/posts" passHref>
