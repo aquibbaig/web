@@ -25,6 +25,7 @@ const PageLayout = (props) => {
       mt={{ base: 2, lg: "4vh" }}
       p={4}
       rounded={10}
+      mb="4vh"
     >
       {/* Nav */}
       <Box d="flex" justifyContent="space-between" alignItems="center">

@@ -9,81 +9,100 @@ import path from 'path'
 import PageLayout from '../../layouts/PageLayout'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 import { Box, Text, useColorModeValue } from '@chakra-ui/react'
+import moment from 'moment'
+import { BiCalendarWeek } from 'react-icons/bi'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  a: Link,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  TestComponent: dynamic(() => import('../../components/TestComponent')),
-  Code: dynamic(() => import('../../components/Code')),
-  Head,
+    a: dynamic(() => import('../../components/CustomLink')),
+    // It also works with dynamically-imported components, which is especially
+    // useful for conditionally loading components for certain routes.
+    // See the notes in README.md for more details.
+    TestComponent: dynamic(() => import('../../components/TestComponent')),
+    Code: dynamic(() => import('../../components/Code')),
+    Blockquote: dynamic(() => import('../../components/Blockquote')),
+    Head,
 }
 
 export default function PostPage({ source, frontMatter }) {
-  const descriptionCol = useColorModeValue("light.secondaryTextColor", "dark.secondaryTextColor")
-  return (
-    <PageLayout>
-      <Head>
-        <title>{`${frontMatter.title}`} | Aquib Baig</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <header>
-        <nav>
-          <Link href="/posts">
-            <a>👈 Go back</a>
-          </Link>
-        </nav>
-      </header>
-      <Box className="post-header" my="2rem">
-        <Text fontSize="2xl">📓 {frontMatter.title}</Text>
-        {frontMatter.description && (
-          <Text color={descriptionCol}>{frontMatter.description}</Text>
-        )}
-      </Box>
-      <Box className="post-body">
-        <MDXRemote {...source} components={components} />
-      </Box>
-    </PageLayout>
-  )
+    const descriptionCol = useColorModeValue(
+        'light.secondaryTextColor',
+        'dark.secondaryTextColor'
+    )
+    return (
+        <PageLayout>
+            <Head>
+                <title>{`${frontMatter.title}`} | Aquib Baig</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
+            <header>
+                <nav>
+                    <Link href="/posts">
+                        <a>👈 Go back</a>
+                    </Link>
+                </nav>
+            </header>
+            <Box className="post-header" my="2rem">
+                <Text fontSize="2xl">📓 {frontMatter.title}</Text>
+                {frontMatter.description && (
+                    <Text color={descriptionCol}>
+                        {frontMatter.description}
+                    </Text>
+                )}
+                {frontMatter.publishedOn && (
+                    <Box my={2} d="flex" alignItems="center" fontSize="sm">
+                        <BiCalendarWeek />
+                        <Text ml={1}>
+                            {moment(frontMatter.publishedOn).format('D MMM YY')}
+                        </Text>
+                    </Box>
+                )}
+            </Box>
+            <Box className="post-body">
+                <MDXRemote {...source} components={components} />
+            </Box>
+        </PageLayout>
+    )
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
-  const source = fs.readFileSync(postFilePath)
+    const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
+    const source = fs.readFileSync(postFilePath)
 
-  const { content, data } = matter(source)
+    const { content, data } = matter(source)
 
-  const mdxSource = await serialize(content, {
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  })
+    const mdxSource = await serialize(content, {
+        // Optionally pass remark/rehype plugins
+        mdxOptions: {
+            remarkPlugins: [],
+            rehypePlugins: [],
+        },
+        scope: data,
+    })
 
-  return {
-    props: {
-      source: mdxSource,
-      frontMatter: data,
-    },
-  }
+    return {
+        props: {
+            source: mdxSource,
+            frontMatter: data,
+        },
+    }
 }
 
 export const getStaticPaths = async () => {
-  const paths = postFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }))
+    const paths = postFilePaths
+        // Remove file extensions for page paths
+        .map((path) => path.replace(/\.mdx?$/, ''))
+        // Map the path into the static paths object required by Next.js
+        .map((slug) => ({ params: { slug } }))
 
-  return {
-    paths,
-    fallback: false,
-  }
+    return {
+        paths,
+        fallback: false,
+    }
 }

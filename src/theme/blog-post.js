@@ -5,10 +5,6 @@ const blogPostCSS = (mode, props) => ({
   ".post-body > ul, .post-body > ol": {
     paddingLeft: "30px"
   },
-  ".post-body > p > a, .post-body > ol >  li > p > a, .post-body > ul >  li > p > a, .post-body > ol >  li > a": {
-    textDecoration: 'underline',
-    textDecorationColor: mode("#cecece", "#cecece")(props)
-  },
   ".post-body > p": {
     margin: "0 0 1rem 0"
   },

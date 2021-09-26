@@ -17,6 +17,7 @@
     "framer-motion": "^4.1.17",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "next": "11.1.2",
     "next-mdx-remote": "^3.0.4",
     "next-remote-watch": "^1.0.0",
