@@ -66,6 +66,13 @@ export default function PostPage({ source, frontMatter }) {
             </Box>
             <Box className="post-body">
                 <MDXRemote {...source} components={components} />
+                <script src="https://utteranc.es/client.js"
+                  repo="aquibbaig/web"
+                  issue-term="url"
+                  theme="github-dark"
+                  crossOrigin="anonymous"
+                  async>
+                </script>
             </Box>
         </PageLayout>
     )

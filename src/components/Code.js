@@ -8,7 +8,7 @@ export default function Code({ content = '', codeClass = 'language-js' }) {
   return (
     <div>
       <pre style={{ maxWidth: '100%', overflow: 'scroll' }}>
-        <code style={{ maxWidth: '100%', overflow: 'scroll' }} className={codeClass}>
+        <code id="jsx-code" style={{ maxWidth: '100%', overflow: 'scroll' }} className={`jsx-3109235630 ${codeClass}`}>
           {content}
         </code>
       </pre>

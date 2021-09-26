@@ -1,0 +1,138 @@
+---
+title: 'Learn react hooks'
+publishedOn: 2021-09-20T09:15:00-0400
+draft: false
+description: "React Hooks have been one of the best ways to write component logic in React. But they
+bring in all their new semantics and rules of hooks of course. Lets go through useState, useReducer, useEffect, useMemo, useCallback
+...this time visually."
+---
+
+# React Hooks: The What
+We wont be spending time on how hooks originated and what are function components and all that stuff.
+If you want to learn more about it, you can visit [react's documentation](https://reactjs.org/docs/hooks-intro.html).
+
+Keep one thing in mind, a React Hook is a javascript function that begins with the prefix **use**, is
+a **ts/js** file at the source, and typically does not render any JSX. It manages logic such as your application state,
+re-rendering, etc. for you.
+
+# Tradeoffs
+- From HOCs and class components, your code is now more re-usable and the size is significantly
+less
+- You can create your own custom hooks, which is a game changer
+- You can integrate multiple hooks within one, opening up endless possibilities
+- You need to follow rules of hooks, which can be a bummer at times
+
+# Show me some code
+Lets start off with the most frequently used hooks in React applications.
+
+# useState hook
+
+**useState** is the simplest react hook which is used to manage component state. 
+
+When you invoke this hook, you get two things
+- a variable which stores the current state value
+- a function which can be used to update that value
+
+<Code codeClass="language-js" content={`import React, { useState } from "react";
+export default function App() {
+  const [counter, setCounter] = useState(0);
+  
+  console.log("re-renders");
+  return (
+    <div className="App">{counter}
+      <button onClick={() => setCounter(counter + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+})`} />
+
+[Open codesandbox link](https://codesandbox.io/embed/usestate-example-3hfw9?fontsize=14&hidenavigation=1&theme=dark)
+
+<mark>Remember: whenever the value of this variable changes, your component will re-render. When, you
+click on the button each time, the variable updates and the component re-renders</mark>
+
+# useReducer hook
+useReducer is logically similar to useState but use useReducer in two cases: 1. when your state is complex, 2. 
+when next state depends on the previous state and multiple keys of the current state need
+updates.
+
+When you invoke **useReducer**, it gives you the following
+- a variable to keep track of current state
+- a *dispatch function* to update the state
+
+<mark>Remember: when you write useState when updating your state by changing multiple keys of the
+state object, your component may re-render multiple times. In that case, the dispatch function from useReducer
+guarantees React that the identity is stable and doesn't need a re-render.</mark>
+
+<Code codeClass="language-js" content={String(`import React, { useReducer } from "react";
+function updater(state) {
+  return state + 1;
+}
+export default function App() {
+  const [counter, setCounter] = useReducer(updater, 0);
+  console.log("re-renders");
+  return (
+    <div className="App">
+      {counter}
+      <button onClick={() => setCounter()}>Increment</button>
+    </div>
+  );
+}`)} />
+
+[Open codesandbox link](https://codesandbox.io/embed/usereducer-example-ip8y6?fontsize=14&hidenavigation=1&theme=dark)
+
+# useEffect hook
+A **side effect** is something that occurs outside the boundaries of the component you are currently
+in. Such effects should not be managed in the function component, instead use the **useEffect**
+hook.
+
+It takes in two things in its declaration: 1. a function as argument, 2. a dependency list.
+
+<mark>Remember: The function passed to this hook will run each time either of the values
+in it's dependency list updates. If there is no dependency list provided, it runs on the
+first render phase only.</mark>
+
+<Code codeClass="language-js" content={String(`import React, { useState, useEffect } from "react";
+export default function App() {
+  const [counter, setCounter] = useState(0);
+  useEffect(() => {
+    console.log("(useEffect)this function runs on each render");
+  }, [counter]);
+  console.log("(useState) re-renders when state var is set");
+  
+  return (
+    <div className="App">
+      {counter}
+      <button onClick={() => setCounter(counter + 1)}>Increment</button>
+    </div>
+  );
+}`)} />
+
+[Open codesandbox link](https://codesandbox.io/embed/useeffect-example-xclrw?fontsize=14&hidenavigation=1&theme=dark)
+
+# useMemo hook
+Performance optimisation, The one thing I love to invest time on. **useMemo** can come in
+handy when you need to tell React not to perform large computations again when its result is already
+available in memory when we computed it earlier, please just reuse it. This small optimisation
+can prevent significantly slow page load times.
+
+It's invocation includes two things, similar to useEffect
+- a function to optimise on
+- a dependency array that states when the result needs to be recomputed
+
+<mark>Remember that if you want your component to not re-render multiple times when props
+  are same, you can wrap it around React.memo() hook, that's different from useMemo.
+</mark>
+
+Do not use side effects in useMemo, those belong in useEffect.
+
+# useCallback hook
+useCallback is mostly similar to useMemo, even useCallback(fn, deps) is equivalent to useMemo(() => fn, deps).
+It returns a memoized version of the callback. 
+
+If you have certain function to be used inside a useMemo function, wrapping those deps around a useCallback makes sense to prevent unnecessary re-renders.
+It tells React that to be memoized values, not triggering a re-render.
+
+useMemo and useCallback are hard to reproduce on a sandbox, it will only make sense if you
+come across these cases in a real world scenario.
