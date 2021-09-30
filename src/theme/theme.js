@@ -5,9 +5,6 @@ import blogPostCSS from "./blog-post";
 // theme.js
 // source: https://material.io/design/color/dark-theme.html
 const theme = extendTheme({
-  fonts: {
-    body: "Inter",
-  },
   styles: {
     global: (props) => ({
       body: {

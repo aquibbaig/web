@@ -19,7 +19,7 @@ const PageLayout = (props) => {
 
   return (
     <Box
-      maxW={{ base: "100%", md: "80%", lg: "40%"}}
+      maxW={{ base: "100%", md: "80%", lg: "40%" }}
       ml="auto"
       mr="auto"
       mt={{ base: 2, lg: "4vh" }}
