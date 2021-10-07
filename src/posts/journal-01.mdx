@@ -1,0 +1,51 @@
+---
+title: 'Journal #1: Experience with authentication workflow using supabase'
+publishedOn: 2021-10-07T09:15:00-0400
+draft: false
+description: 'I was using supabase-js to handle auth in my app which abstracts signIn and signUp by providing serverless functions you can call the supabase client with. So all the backend logic out of the way.
+All I need to care about now is how to create a flawless user login/register experience.'
+---
+
+<Blockquote content={`Don't use hacks that affect user experience negatively, at least not knowingly`} />
+
+# Discussing various workflows
+
+There are two ways a user can login/register in my app. Lets focus on the signup part.
+
+## 1. Signup using Email
+
+- Enters email, password and hits the SignUp button
+- The client makes a request to the supabase server which does the actual signup process.
+- Now as per supabase, all of this user metadata (email, password) has been added to their internal **users** table and now it awaits email confirmation, you cant log in without that.
+- Once the email is confirmed, the user can login normally using his credentials.
+
+## 2. Signup using Auth Providers
+
+Users can also signup using auth providers such as Google and Github. Lets use the example of Github in this case.
+
+- Clicks on *"SignIn with Github"* button.
+- The client makes a request to the supabase server, here the **redirectTo** url is necessary. It will be used to redirect
+to user after a successful sign up. *(Note: For executing a SignUp with Github, your supabase client should be configured on the dashboard properly)*
+- On a successful signup, it redirects the user to the provided **redirectTo** url and it appends a **#{access_token}** with the url.
+- You can use this access_token to login.
+
+# SignUp Workflow
+
+I was mostly thinking on what to do with redirects and when should you actually login.
+I was using a simple Redux utility **zustand**, 
+- the major area of concern was *when should I hydrate my user store with user details?*.
+- cause my app on load needs a valid **userId** to fetch data from server, else every component would show a *"failed to fetch"*
+
+![User signup](https://user-images.githubusercontent.com/26324376/136423282-3c413353-8518-4331-820b-026d83bfbb86.png)
+**user signup workflow*
+
+# Takeaways
+
+The question of *when should I hydrate my user store with user details?* was answered by creating a common sink for all auth providers to
+end up before going to my app.
+In my case, this component was the *Complete Profile Component*.
+
+In this component, I do all the fetching and updating and all of that stuff but
+what matters is I hydrate the store with a valid user, so that when the user is
+redirected to the app's homepage, he doesn't have errors but a valid user for whom
+data can be fetched!

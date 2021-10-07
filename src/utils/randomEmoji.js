@@ -1,5 +1,8 @@
 export const blogPostRandom = (inputStr) => {
-  return blogPostEmojis[inputStr.length%8]
+  if (inputStr.includes('journal')) {
+    return "📝";
+  }
+  return blogPostEmojis[inputStr.length%7]
 }
 
 const blogPostEmojis = {
@@ -10,5 +13,4 @@ const blogPostEmojis = {
   4: "🎒",
   5: "📗",
   6: "📙",
-  7: "📝",
 }
