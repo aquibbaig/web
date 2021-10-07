@@ -49,15 +49,15 @@ export default function Home() {
             </Text>
           </Link>
           <Box d="flex">
-            👨‍💻 <Text>Presently, I work as a associate software engineer at <a className={clsx(
+            👨‍💻 <Text ml={2}>Presently, I work as a associate software engineer at <a className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
             )} target="blank" href="https://www.redhat.com/en">Redhat</a></Text>
           </Box>
           <Box d="flex">
-            🔧 <Text>Building virtualbook, important jot-downs to never forget again</Text>
+            🔧 <Text ml={2}>Building virtualbook, important jot-downs to never forget again</Text>
           </Box>
           <Box d="flex">
-            👨‍🎓 <Text>Mentor at Google Summer of code 2021</Text>
+            👨‍🎓 <Text ml={2}>Mentor at Google Summer of code 2021</Text>
           </Box>
         </Box>
         <Box mt="6vh">
@@ -87,7 +87,7 @@ export default function Home() {
           </Text>
         </Box>
         <Box my={8}>
-          <Text fontSize="lg">🤙 {`Let's`} have a chat</Text>
+          <Text fontSize="lg" mr={2}>🤙 {`Let's`} have a chat</Text>
           <Text>
             I am always happy to talk about working together in amazing ideas, opportunity or just
             a casual conversation. If {`you'd`} like to get in touch, shoot me an email below.

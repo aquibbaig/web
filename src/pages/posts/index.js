@@ -21,12 +21,14 @@ export default function Posts({ posts })  {
           {posts.map((post) => (
             <ListItem key={post.filePath} d="flex">
               {blogPostRandom(post.filePath)}
-              <Link
-                as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/posts/[slug]`}
-              >
-                <a>{post.data.title}</a>
-              </Link>
+              <Box ml={2}>
+                <Link
+                  as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
+                  href={`/posts/[slug]`}
+                >
+                  <a>{post.data.title}</a>
+                </Link>
+              </Box>
             </ListItem>
           ))}
         </List>
