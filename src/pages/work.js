@@ -20,9 +20,13 @@ export default function Work() {
                 <title>Work | Aquib Baig</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <Box className="pinned" d="flex" my="4vh" pl={1}>
+            <Box className="pinned" d="flex" mt="4vh" pl={1}>
                 📌
-                <Text>Associate Software Engineer, Redhat</Text>
+                <Text ml={2}>Associate Software Engineer, Redhat</Text>
+            </Box>
+            <Box className="pinned" d="flex" mb="4vh" pl={1}>
+                🎒
+                <Text ml={2}>Building programmers-backpack, your tools profile in the programming world</Text>
             </Box>
             <Box className="work-2021">
                 <Text mb={2}>2021</Text>
@@ -30,19 +34,29 @@ export default function Work() {
                     <List>
                         <ListItem d="flex">
                             👨‍🎓
-                            <Text>Mentor at Google Summer of code 2021</Text>
+                            <Text ml={2}>Mentor at Google Summer of code 2021</Text>
                         </ListItem>
                         <ListItem d="flex">
-                            🔧{' '}
-                            <Text>
-                                Building virtualbook, a side-project that helps
-                                you summarise important topics and visualise in
-                                a single view
+                            🔧
+                            <Text ml={2}>
+                                Built{' '}
+                                <a
+                                    className={clsx([
+                                        styles.rlink,
+                                        styles.animatedunderline,
+                                        styles.animatedunderline_type1,
+                                    ])}
+                                    target="blank"
+                                    href="https://virtualbook.vercel.app"
+                                >
+                                    virtualbook
+                                </a>
+                                , effective summaries, reading and note making.
                             </Text>
                         </ListItem>
                         <ListItem d="flex">
-                            🏗️{' '}
-                            <Text>
+                            🏗️
+                            <Text ml={2}>
                                 Integrated user authentication mechanism in{' '}
                                 <a
                                     className={clsx([
@@ -58,18 +72,18 @@ export default function Work() {
                             </Text>
                         </ListItem>
                         <ListItem d="flex">
-                            ⛏️{' '}
-                            <Text>
+                            ⛏️
+                            <Text ml={2}>
                                 Built a dashboard for visualising data curated
                                 by the bench-routes server
                             </Text>
                         </ListItem>
                         <ListItem d="flex">
-                            🔬 <Text>Experimenting around with golang</Text>
+                            🔬 <Text ml={2}>Experimenting around with golang</Text>
                         </ListItem>
                         <ListItem d="flex">
-                            👾{' '}
-                            <Text>
+                            👾
+                            <Text ml={2}>
                                 Some competitive programming questions on
                                 codeforces
                             </Text>
@@ -83,8 +97,8 @@ export default function Work() {
                     <AccordionPanel pl={2}>
                         <List>
                             <ListItem d="flex">
-                                ⛏️{' '}
-                                <Text>
+                                ⛏️
+                                <Text ml={2}>
                                     Built{' '}
                                     <a
                                         className={clsx([
@@ -102,8 +116,8 @@ export default function Work() {
                                 </Text>
                             </ListItem>
                             <ListItem d="flex">
-                                📱{' '}
-                                <Text>
+                                📱
+                                <Text ml={2}>
                                     Built{' '}
                                     <a
                                         className={clsx([
