@@ -32,7 +32,7 @@ export default function Home() {
           <AccordionItem id="accordion">
             <AccordionButton>🐱 Read more</AccordionButton>
             <AccordionPanel>
-              I keep a keen fascination in 🌌astronomy and love to know about the secrets of the
+              I keep a keen fascination in 🌌 <span style={{ paddingLeft: '5px' }}>astronomy</span> and love to know about the secrets of the
               universe. Wondering at the nightsky randomly makes me wonder in awe at how
               beautiful the celestial universe actually is, keeping in mind we can only
               see some of it.{' '}
