@@ -54,7 +54,18 @@ export default function Home() {
             )} target="blank" href="https://www.redhat.com/en">Redhat</a></Text>
           </Box>
           <Box d="flex">
-            🔧 <Text ml={2}>Building virtualbook, important jot-downs to never forget again</Text>
+            🔧 <Text ml={2}>Built <a
+                className={clsx([
+                    styles.rlink,
+                    styles.animatedunderline,
+                    styles.animatedunderline_type1,
+                ])}
+                target="blank"
+                href="https://virtualbook.vercel.app"
+            >
+                virtualbook
+            </a>
+            , effective summaries, reading and note taking</Text>
           </Box>
           <Box d="flex">
             👨‍🎓 <Text ml={2}>Mentor at Google Summer of code 2021</Text>

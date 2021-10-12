@@ -22,7 +22,7 @@ export default function Projects() {
             </Head>
             <Box className="pinned" d="flex" my="4vh" pl={1}>
                 📌
-                <Text>Work In Progress, virtualbook</Text>
+                <Text ml={2}>Work In Progress, programmers-backpack</Text>
             </Box>
             <Box mt="4vh">
                 <Text>🐱 Bench routes</Text>
@@ -39,6 +39,21 @@ export default function Projects() {
                                 This makes it tough to discover then condition and state of the such application at any given point.
                                 Bench-routes monitors the routes of a web application and helps you know about the current state of
                                 each route, along with various related performance metrics.
+                            </AccordionPanel>
+                        </AccordionItem>
+                    </Accordion>
+                </Box>
+            </Box>
+            <Box mt="4vh">
+                <Text>🐱 Virtualbook</Text>
+                <Box pl={2}>
+                    <Text>Create your personal space to curate learning material, manage notes and discover amazing articles.
+                    </Text>
+                    <Accordion allowToggle>
+                        <AccordionItem id="accordion">
+                            <AccordionButton>▼ More</AccordionButton>
+                            <AccordionPanel pl={2}>
+                                It provides an effective note taking experience with support of a rich editor and allows you to manage your articles in one place. You can also keep track of articles others publish at your own personal space and get notified when their authors update it.
                             </AccordionPanel>
                         </AccordionItem>
                     </Accordion>
