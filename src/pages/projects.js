@@ -25,7 +25,17 @@ export default function Projects() {
                 <Text ml={2}>Work In Progress, programmers-backpack</Text>
             </Box>
             <Box mt="4vh">
-                <Text>🐱 Bench routes</Text>
+                <Text>🐱 <a
+                    className={clsx([
+                        styles.rlink,
+                        styles.animatedunderline,
+                        styles.animatedunderline_type1,
+                    ])}
+                    target="blank"
+                    href="https://bench-routes.netlify.app/"
+                >
+                    Bench-routes
+                </a></Text>
                 <Box pl={2}>
                     <Text>Bench-routes is a monitoring tool that monitors from system/kernel level
                         information to the application level logs and performance of routes in unix-based
@@ -45,7 +55,17 @@ export default function Projects() {
                 </Box>
             </Box>
             <Box mt="4vh">
-                <Text>🐱 Virtualbook</Text>
+                <Text>🐱 <a
+                    className={clsx([
+                        styles.rlink,
+                        styles.animatedunderline,
+                        styles.animatedunderline_type1,
+                    ])}
+                    target="blank"
+                    href="https://virtualbook.vercel.app/"
+                >
+                    Virtualbook
+                </a></Text>
                 <Box pl={2}>
                     <Text>Create your personal space to curate learning material, manage notes and discover amazing articles.
                     </Text>
@@ -60,7 +80,17 @@ export default function Projects() {
                 </Box>
             </Box>
             <Box mt="4vh">
-                <Text>🐱 Literature</Text>
+                <Text>🐱 <a
+                    className={clsx([
+                        styles.rlink,
+                        styles.animatedunderline,
+                        styles.animatedunderline_type1,
+                    ])}
+                    target="blank"
+                    href="https://github.com/zairza-cetb/literature"
+                >
+                    Literature
+                </a></Text>
                 <Box pl={2}>
                     <Text>Literature is a card game for 4 to 12 players, most commonly played with 6 or 8 players in two teams.
                     </Text>
