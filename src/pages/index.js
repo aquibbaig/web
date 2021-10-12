@@ -100,6 +100,20 @@ export default function Home() {
                 Send an email
               </Text>
             </Link>
+            <Link href="https://github.com/aquibbaig" passHref>
+              <Text ml={4} fontSize="md" cursor="pointer" className={clsx(
+                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+              )}>
+                Github
+              </Text>
+            </Link>
+            <Link href="https://twitter.com/BaigAquib" passHref>
+              <Text ml={4} fontSize="md" cursor="pointer" className={clsx(
+                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+              )}>
+                Twitter
+              </Text>
+            </Link>
           </Box>
         </Box>
       </Box>
