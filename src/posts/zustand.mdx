@@ -35,7 +35,8 @@ powerful (React Hooks) `🦸 useSuperPowers()` are!
   import { devtools, persist } from 'zustand/middleware'
 
   interface Store {
-    counter: number
+    counter: number,
+    updateCounter: (counter: number) => void
   }
 
   let useStore = (set: SetState<Store>, get: GetState<Store>) => ({
@@ -46,7 +47,7 @@ powerful (React Hooks) `🦸 useSuperPowers()` are!
       })
     } 
   })
-  useStore = persist(useStore, { name: counter })
+  useStore = persist(useStore, { name: "counter" })
   useStore = devtools(useStore)
 
   export const useCounterStore = create<Store>(useStore)
