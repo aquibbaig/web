@@ -27,6 +27,14 @@ const blogPostCSS = (mode, props) => ({
   "iframe": {
     margin: "1rem 0 1rem 0"
   },
+  "code": {
+    bg: '#e7e9eb',
+    color: 'rgb(97, 97, 97)'
+  },
+  "blockquote": {
+    borderLeft: "5px solid #dddfe2",
+    padding: "20px 45px 20px 26px"
+  }
 })
 
 export default blogPostCSS

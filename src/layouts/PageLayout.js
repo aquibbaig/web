@@ -8,6 +8,7 @@ import { ColorModeSwitcher } from '../utils/themeswitch'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { getBreadcrumbsFromPath, isCurrentPage, trim } from '../utils/utils'
+import Prism from 'prismjs'
 
 const PageLayout = (props) => {
   const { asPath } = useRouter();
@@ -15,6 +16,7 @@ const PageLayout = (props) => {
 
   useEffect(() => {
     setCrumbs(getBreadcrumbsFromPath(asPath));
+    Prism.highlightAll();
   }, [asPath])
 
   return (

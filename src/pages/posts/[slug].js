@@ -44,7 +44,7 @@ export default function PostPage({ source, frontMatter }) {
             <header>
                 <nav>
                     <Link href="/posts">
-                        <a>👈 Go back</a>
+                        <a>👈 <span style={{ marginLeft: "4px" }}>Go back</span></a>
                     </Link>
                 </nav>
             </header>
@@ -66,13 +66,6 @@ export default function PostPage({ source, frontMatter }) {
             </Box>
             <Box className="post-body">
                 <MDXRemote {...source} components={components} />
-                <script src="https://utteranc.es/client.js"
-                  repo="aquibbaig/web"
-                  issue-term="url"
-                  theme="github-dark"
-                  crossOrigin="anonymous"
-                  async>
-                </script>
             </Box>
         </PageLayout>
     )
