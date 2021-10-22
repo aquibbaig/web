@@ -49,9 +49,9 @@ export default function Home() {
             </Text>
           </Link>
           <Box d="flex">
-            👨‍💻 <Text ml={2}>Presently, I work as a associate software engineer at <a className={clsx(
+            👨‍💻 <Text ml={2}>Presently, I work as a Associate Software Engineer at <a className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-            )} target="blank" href="https://www.redhat.com/en">Redhat</a></Text>
+            )} target="blank" href="https://www.redhat.com/en">Red Hat</a></Text>
           </Box>
           <Box d="flex">
             🔧 <Text ml={2}>Built <a

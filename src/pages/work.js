@@ -22,7 +22,7 @@ export default function Work() {
             </Head>
             <Box className="pinned" d="flex" mt="4vh" pl={1}>
                 📌
-                <Text ml={2}>Associate Software Engineer, Redhat</Text>
+                <Text ml={2}>Associate Software Engineer, Red Hat</Text>
             </Box>
             <Box className="pinned" d="flex" mb="4vh" pl={1}>
                 🎒
