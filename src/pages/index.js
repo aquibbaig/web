@@ -42,10 +42,10 @@ export default function Home() {
         </Accordion>
         <Box mt="6vh">
           <Link href="/work" passHref>
-            <Text fontSize="lg" cursor="pointer" className={clsx(
+            <Text fontSize="xl" cursor="pointer" className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
             )}>
-              /work
+              Work
             </Text>
           </Link>
           <Box d="flex">
@@ -73,10 +73,10 @@ export default function Home() {
         </Box>
         <Box mt="6vh">
           <Link href="/posts" passHref>
-            <Text fontSize="lg" cursor="pointer" className={clsx(
+            <Text fontSize="xl" cursor="pointer" className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
             )}>
-              /posts
+              Posts
             </Text>
           </Link>
           <Text>
@@ -86,15 +86,27 @@ export default function Home() {
         </Box>
         <Box mt="6vh">
           <Link href="/projects" passHref>
-            <Text fontSize="lg" cursor="pointer" className={clsx(
+            <Text fontSize="xl" cursor="pointer" className={clsx(
               [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
             )}>
-              /projects
+              Projects
             </Text>
           </Link>
           <Text>
             Building tools for humans to use. I feel that I am deeply connected to my projects,
             each of them has helped me achieve a particular strata of learning and fun.
+          </Text>
+        </Box>
+        <Box mt="6vh">
+          <Link href="/snippets" passHref>
+            <Text fontSize="xl" cursor="pointer" className={clsx(
+              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+            )}>
+              Snippets
+            </Text>
+          </Link>
+          <Text>
+            A bitersweet dump of useful code-snippets for folks to copy-paste.
           </Text>
         </Box>
         <Box my={8}>

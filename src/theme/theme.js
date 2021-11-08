@@ -46,6 +46,10 @@ const theme = extendTheme({
         "ghostThemed": (props) => ({
           bg: props.colorMode === "dark" ? "#252525" : "#ebebeb",
           borderRadius: "md"
+        }),
+        "plain": (props) => ({
+          bg: "transparent",
+          borderRadius: "md"
         })
       }
     },
