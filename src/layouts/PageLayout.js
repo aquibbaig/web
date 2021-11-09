@@ -19,6 +19,7 @@ import { getBreadcrumbsFromPath, isCurrentPage, trim } from '../utils/utils'
 import Prism from 'prismjs'
 import { RiMusicFill } from 'react-icons/ri'
 import CurrentlyPlaying from '../components/CurrentPlaying'
+import Equaliser from '../components/Equaliser'
 
 const PageLayout = (props) => {
   const { asPath } = useRouter();
@@ -76,7 +77,7 @@ const PageLayout = (props) => {
               <PopoverCloseButton />
               <PopoverHeader>
                 <Box fontWeight="bold" d="flex" alignItems="center">
-                  <RiMusicFill />
+                  <Equaliser />
                   <Box ml={1}>Now Playing</Box>
                 </Box>
               </PopoverHeader>
