@@ -97,18 +97,6 @@ export default function Home() {
             each of them has helped me achieve a particular strata of learning and fun.
           </Text>
         </Box>
-        <Box mt="6vh">
-          <Link href="/snippets" passHref>
-            <Text fontSize="xl" cursor="pointer" className={clsx(
-              [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-            )}>
-              Snippets
-            </Text>
-          </Link>
-          <Text>
-            A bitersweet dump of useful code-snippets for folks to copy-paste.
-          </Text>
-        </Box>
         <Box my={8}>
           <Text fontSize="lg" mr={2}>🤙 {`Let's`} have a chat</Text>
           <Text>

@@ -14,6 +14,9 @@ const theme = extendTheme({
       ".chakra-breadcrumb__link:hover": {
         textDecoration: "none"
       },
+      "::-webkit-scrollbar": {
+        display: 'none'
+      },
     }),
   },
   components: {
