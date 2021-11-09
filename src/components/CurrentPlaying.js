@@ -40,7 +40,7 @@ export default function CurrentlyPlaying() {
         <Box d="flex" alignItems="baseline" justifyContent="space-between">
           <Box fontSize="lg" fontWeight="600">{title}</Box>
           <Box cursor="pointer">
-            <a target="_blank" href={songUrl}><RiPlayCircleFill /></a>
+            <a target="_blank" rel="noreferrer" href={songUrl}><RiPlayCircleFill /></a>
           </Box>
         </Box>
         <Box>{artist.length > 20 ? artist.substr(0,20) + "..." : artist}</Box>
