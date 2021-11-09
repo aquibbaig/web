@@ -53,6 +53,22 @@ const theme = extendTheme({
         })
       }
     },
+    Popover: {
+      parts: ["popper"],
+      baseStyle: props => ({
+        popper: {
+          background: props.colorMode === "dark" ? "#252525" : "light.ghost",
+        },
+        content: {
+          background: props.colorMode === "dark" ? "#252525" : "light.ghost",
+          border: '2px solid',
+          _focus: {
+            boxShadow: 'none'
+          }
+        },
+        arrow: {},
+      }),
+    },
     Accordion: {
       parts: ["container", "button", "panel", "icon"],
       baseStyle: props => ({
