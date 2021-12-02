@@ -11,6 +11,7 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
 import { Box, Text, useColorModeValue } from '@chakra-ui/react'
 import moment from 'moment'
 import { BiCalendarWeek } from 'react-icons/bi'
+import Socials from '../../components/socials'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -66,6 +67,10 @@ export default function PostPage({ source, frontMatter }) {
             </Box>
             <Box className="post-body">
                 <MDXRemote {...source} components={components} />
+            </Box>
+            <Box className="socials" mt={8} mb={4}>
+                <Box>written by <i>Aquib Baig.</i></Box>
+                <Socials />
             </Box>
         </PageLayout>
     )

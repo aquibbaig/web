@@ -28,12 +28,16 @@ const blogPostCSS = (mode, props) => ({
     margin: "1rem 0 1rem 0"
   },
   "code": {
-    bg: '#e7e9eb',
-    color: 'rgb(97, 97, 97)'
+    bg: mode('#e7e9eb', "#252525")(props),
+    color: mode('rgb(97, 97, 97)', "#d8d8d8")(props),
+    padding: '3px',
+    borderRadius: '2px'
   },
   "blockquote": {
     borderLeft: "5px solid #dddfe2",
-    padding: "20px 45px 20px 26px"
+    padding: "20px 45px 20px 26px",
+    marginTop: '2vh',
+    marginBottom: '2vh'
   }
 })
 

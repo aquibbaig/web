@@ -11,6 +11,7 @@ import {
     AccordionPanel,
 } from '@chakra-ui/react'
 import PageLayout from '../layouts/PageLayout'
+import Socials from '../components/socials'
 
 export default function Home() {
   return (
@@ -104,27 +105,7 @@ export default function Home() {
             a casual conversation. If {`you'd`} like to get in touch, shoot me an email below.
           </Text>
           <Box mt={4}>
-            <Link href="mailto:aquibbaig97@gmail.com" passHref>
-              <Text fontSize="md" cursor="pointer" className={clsx(
-                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-              )}>
-                Send an email
-              </Text>
-            </Link>
-            <Link href="https://github.com/aquibbaig" passHref>
-              <Text ml={4} fontSize="md" cursor="pointer" className={clsx(
-                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-              )}>
-                Github
-              </Text>
-            </Link>
-            <Link href="https://twitter.com/BaigAquib" passHref>
-              <Text ml={4} fontSize="md" cursor="pointer" className={clsx(
-                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
-              )}>
-                Twitter
-              </Text>
-            </Link>
+            <Socials />
           </Box>
         </Box>
       </Box>
