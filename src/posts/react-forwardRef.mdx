@@ -1,0 +1,158 @@
+---
+title: 'React forwardRef use cases'
+publishedOn: 2021-12-02T09:15:00-0400
+draft: false
+description: "React refs can be very useful to control or access DOM elements without the use of props,
+so let's understand the use case of forwardRefs for user defined components"
+---
+
+🔮 Traditionally, refs provided a handy use case when you want to control or access DOM elements.
+One such use case can be to focus on a specific input when the page loads. This can be achieved
+by the following piece.
+
+```js
+const inputRef = useRef(null);
+
+// later...
+<input ref={inputRef} />
+
+// and then...
+useEffect(() => {
+  inputRef.current.focus();
+}, [])
+```
+
+> 💡 Think about applying this use case to a user defined component
+which can be controlled this way.
+
+One such use case can be when a parent component needs to access an element or event which
+is internal to the Child component. Let's go through such
+a use case with an example.
+
+# Scenario
+- There are two components -- Document and ReusableInput.
+- Each Document component has its own ReusableInput component.
+- The catch here is that our Document component contains a button on click of
+which we need to grab the text contained in `ReusableInput` and save it.
+
+Let's define our components to understand it better.
+
+```js
+// Document.js
+import ReusableInput from "./Input";
+
+export default function Document() {
+  const getDocumentDetails = () => {
+    // get data from resusable input
+  };
+
+  return (
+    <>
+      <ReusableInput />
+      <button onClick={getDocumentDetails}>Save Document</button>
+    </>
+  );
+}
+
+// Input.js
+export default function ReusableInput() {
+  const [text, setText] = useState("");
+
+  return <input onChange={(e) => setText(e.target.value)} />;
+}
+```
+
+What we want is when we click on `Save Document`, we should be able to get the input text
+from the ReusableInput component.
+
+We can do this by using two methods from React library: `forwardRef` and `useImperativeHandle`.
+
+# Forwarding refs
+You might be familiar with assigning refs to HTML DOM elements. But how do you pass refs to
+user defined components down the tree? This is where forwardRef comes in handy. You can now
+create a ref and pass it to a user defined component wrapped using `forwardRef()` decorator
+using a `ref` prop.
+
+```js
+// Document.js
+  export default function Document() {
++  const inputRef = useRef(null);
+
+    const getDocumentDetails = () => {
+      // get data from current input
+    };
+
+    return (
+      <>
++       <ReusableInput ref={inputRef} />
+        <button onClick={getDocumentDetails}>Save</button>
+      </>
+    );
+  }
+
+// Input.js
+  import { forwardRef, useState, useImperativeHandle } from "react";
+
++ const ReusableInput = forwardRef((props, ref) => {
+    const [text, setText] = useState("");
+
+    return <input onChange={(e) => setText(e.target.value)} />;
+  });
+
+  export default ReusableInput;
+```
+
+# Getting the input text
+To get the text, we need to leverage our `ref` object and create a function that is internal to
+the `ReusableInput` component but can be accessible outside of it. We can do this using the
+`useImperativeHandle` hook.
+
+> ℹ️ The `useImperativeHandle` hook should be used with forwardRef
+
+Our final implementation looks something like this.
+```js
+// Document.js
+  import { useRef } from "react";
+  import ReusableInput from "./Input";
+
+  export default function Document() {
+    const inputRef = useRef(null);
+
+    const getDocumentDetails = () => {
+      // get data from current input
++     console.log(inputRef.current.getText());
+    };
+
+    return (
+      <>
+        <ReusableInput ref={inputRef} />
+        <button onClick={getDocumentDetails}>Save</button>
+      </>
+    );
+  }
+
+
+  // Input.js
+  import { forwardRef, useState, useImperativeHandle } from "react";
+
+  const ReusableInput = forwardRef((props, ref) => {
+    const [text, setText] = useState("");
+
+    // exposes getText() method to be
+    // accessible via ref.
++   useImperativeHandle(ref, () => ({
++     getText() {
++       return text;
++     }
++   }));
+
+    return <input onChange={(e) => setText(e.target.value)} />;
+  });
+
+  export default ReusableInput;
+```
+
+> 📝 Notice how the `getText()` function is now exposed to the parent component using the passed
+ref object.
+
+And that is a wrap, thanks for the patient read!
