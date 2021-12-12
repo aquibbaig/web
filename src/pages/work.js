@@ -20,21 +20,23 @@ export default function Work() {
                 <title>Work | Aquib Baig</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <Box className="pinned" d="flex" mt="4vh" pl={1}>
-                📌
-                <Text ml={2}>Associate Software Engineer, Red Hat</Text>
-            </Box>
-            <Box className="pinned" d="flex" mb="4vh" pl={1}>
-                🎒
-                <Text ml={2}>Building programmers-backpack, your tools profile in the programming world</Text>
+            <Box mb="4vh" className="pinned" d="flex" mt="4vh" pl={1}>
+              👨‍💻
+              <Text ml={2}>Presently, Member of Technical Team at <a className={clsx(
+                [styles.rlink,styles.animatedunderline,styles.animatedunderline_type1]
+              )} target="blank" href="https://www.toplyne.io/">Toplyne.io</a></Text>
             </Box>
             <Box className="work-2021">
                 <Text mb={2}>2021</Text>
                 <Box pl={2}>
                     <List>
+                      <ListItem d="flex">
+                        📌
+                        <Text ml={2}>Associate Software Engineer, Red Hat</Text>
+                      </ListItem>
                         <ListItem d="flex">
-                            👨‍🎓
-                            <Text ml={2}>Mentor at Google Summer of code 2021</Text>
+                          👨‍🎓
+                          <Text ml={2}>Mentor at Google Summer of code 2021</Text>
                         </ListItem>
                         <ListItem d="flex">
                             🔧
