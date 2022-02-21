@@ -8,7 +8,6 @@ import {
     PopoverTrigger,
     PopoverContent,
     PopoverCloseButton,
-    PopoverHeader,
     PopoverArrow,
     PopoverBody
 } from '@chakra-ui/react'
@@ -19,7 +18,6 @@ import { getBreadcrumbsFromPath, isCurrentPage, trim } from '../utils/utils'
 import Prism from 'prismjs'
 import { RiMusicFill } from 'react-icons/ri'
 import CurrentlyPlaying from '../components/CurrentPlaying'
-import Equaliser from '../components/Equaliser'
 
 const PageLayout = (props) => {
   const { asPath } = useRouter();
@@ -75,13 +73,7 @@ const PageLayout = (props) => {
             <PopoverContent minW="20vw">
               <PopoverArrow />
               <PopoverCloseButton />
-              <PopoverHeader>
-                <Box fontWeight="bold" d="flex" alignItems="center">
-                  <Equaliser />
-                  <Box ml={1}>Now Playing</Box>
-                </Box>
-              </PopoverHeader>
-              <PopoverBody>
+              <PopoverBody p={0}>
                 <CurrentlyPlaying />
               </PopoverBody>
             </PopoverContent>
