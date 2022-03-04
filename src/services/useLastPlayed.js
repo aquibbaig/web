@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import querystring from "querystring";
 
-export default function useCurrentlyPlaying() {
+export default function useLastPlayed() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ export default function useCurrentlyPlaying() {
   const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
 
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
-  const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+  const LAST_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=50`;
   const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
   const getAccessToken = useCallback(async () => {
@@ -25,6 +25,7 @@ export default function useCurrentlyPlaying() {
       body: querystring.stringify({
         grant_type: "refresh_token",
         refresh_token,
+        scope: "user-read-recently-played",
       }),
     });
 
@@ -33,10 +34,10 @@ export default function useCurrentlyPlaying() {
 
   useEffect(() => {
     let didCancel = false;
-    async function fetchNowPlaying() {
+    async function fetchLastPlayed() {
       const { access_token } = await getAccessToken();
       setLoading(true);
-      fetch(NOW_PLAYING_ENDPOINT, {
+      fetch(LAST_PLAYED_ENDPOINT, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -60,12 +61,12 @@ export default function useCurrentlyPlaying() {
         });
     }
 
-    fetchNowPlaying();
+    fetchLastPlayed();
 
     return () => {
       didCancel = true;
     };
-  }, [NOW_PLAYING_ENDPOINT, getAccessToken]);
+  }, [LAST_PLAYED_ENDPOINT, getAccessToken]);
 
   return { data, error, loading };
 }
