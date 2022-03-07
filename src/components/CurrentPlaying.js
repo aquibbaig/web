@@ -8,7 +8,6 @@ import LastPlayed from "./LastPlayed";
 
 function showRandomStatus() {
   const rng = Math.floor((Math.random() * 5) + 1);;
-  console.log(rng)
   switch(rng) {
     case 1:
       return "🎧 focusing...";
