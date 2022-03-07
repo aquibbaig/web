@@ -79,7 +79,7 @@ export default function PostPage({ source, frontMatter }) {
             {!error && <Box ml={4} d="flex" alignItems="center" fontSize="sm">
               <RiEyeCloseLine />
               <Text ml={1}>
-                {(data?.total || 0).toString()}
+                {!data?.total ? "...": data?.total}
               </Text>
             </Box>}
           </Box>
