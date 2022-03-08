@@ -65,7 +65,7 @@ export default function CurrentlyPlaying() {
           />
         </Box>
         <Box ml={2} w="100%">
-          <Box d="flex" alignItems="baseline" justifyContent="space-between">
+          <Box d="flex" alignItems="center" justifyContent="flex-start">
             <Box fontSize="lg" fontWeight="600">
               {title}
             </Box>
