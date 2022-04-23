@@ -1,11 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import querystring from "querystring";
+import useSWR from "swr";
 
 export default function useLastPlayed() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
   // defaults
   const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
   const client_secret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
@@ -32,41 +29,22 @@ export default function useLastPlayed() {
     return response.json();
   }, [TOKEN_ENDPOINT, basic, refresh_token]);
 
-  useEffect(() => {
-    let didCancel = false;
-    async function fetchLastPlayed() {
+  const { data, error } = useSWR(
+    "last-played",
+    async () => {
       const { access_token } = await getAccessToken();
-      setLoading(true);
-      fetch(LAST_PLAYED_ENDPOINT, {
+      const response = await fetch(LAST_PLAYED_ENDPOINT, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
-      })
-        .then((res) => {
-          if (res.status === 204 || res.status > 400) {
-            return { is_playing: false };
-          } else {
-            return res.json();
-          }
-        })
-        .then((data) => {
-          if (!didCancel) {
-            setData(data);
-            setLoading(false);
-          }
-        })
-        .catch((err) => {
-          setError(err);
-          setLoading(false);
-        });
+      });
+
+      return await response.json();
+    },
+    {
+      refreshInterval: 5000,
     }
+  );
 
-    fetchLastPlayed();
-
-    return () => {
-      didCancel = true;
-    };
-  }, [LAST_PLAYED_ENDPOINT, getAccessToken]);
-
-  return { data, error, loading };
+  return { data, error, loading: !data };
 }

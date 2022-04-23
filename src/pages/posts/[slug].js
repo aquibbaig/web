@@ -39,9 +39,11 @@ export default function PostPage({ source, frontMatter }) {
   const { data, error } = usePageViews(slug);
 
   useEffect(() => {
-    fetch(`/api/views/${slug}`, {
-      method: 'POST'
-    });
+    if (process.env.NODE_ENV !== "development") {
+      fetch(`/api/views/${slug}`, {
+        method: "POST",
+      });
+    }
   }, [slug]);
 
   const descriptionCol = useColorModeValue(
@@ -76,12 +78,12 @@ export default function PostPage({ source, frontMatter }) {
                 {moment(frontMatter.publishedOn).format("D MMM YY")}
               </Text>
             </Box>
-            {!error && <Box ml={4} d="flex" alignItems="center" fontSize="sm">
-              <RiEyeCloseLine />
-              <Text ml={1}>
-                {!data?.total ? "...": data?.total}
-              </Text>
-            </Box>}
+            {!error && (
+              <Box ml={4} d="flex" alignItems="center" fontSize="sm">
+                <RiEyeCloseLine />
+                <Text ml={1}>{!data?.total ? "..." : data?.total}</Text>
+              </Box>
+            )}
           </Box>
         )}
       </Box>
