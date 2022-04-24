@@ -38,6 +38,10 @@ export default function useCurrentlyPlaying() {
         },
       });
 
+      if (response.status === 204 || response.status > 400) {
+        return { is_playing: false };
+      }
+
       return await response.json();
     },
     {
