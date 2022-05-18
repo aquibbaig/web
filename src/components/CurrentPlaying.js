@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import useCurrentlyPlaying from "../services/useCurrentlyPlaying";
-import { Box, Divider, useColorModeValue } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 
-import { RiPlayCircleFill } from "react-icons/ri";
 import LastPlayed from "./LastPlayed";
 import { trim } from "../utils/utils";
 

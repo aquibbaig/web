@@ -8,7 +8,10 @@ export default function CustomLink({ as, href, ...otherProps }) {
       </Link>
       <style jsx>{`
         a {
-          font-weight: 500;
+          font-weight: 600;
+          color: #0D52F1;
+        }
+        a:hover {
           text-decoration: underline;
         }
       `}</style>

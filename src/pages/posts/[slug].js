@@ -16,6 +16,11 @@ import Socials from "../../components/socials";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import usePageViews from "../../hooks/usePageViews";
+import { BiArrowBack } from "react-icons/bi";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import readingTime from "reading-time";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -38,6 +43,8 @@ export default function PostPage({ source, frontMatter }) {
 
   const { data, error } = usePageViews(slug);
 
+  const [hoverEffect, setHoverEffect] = useState(false);
+
   useEffect(() => {
     if (process.env.NODE_ENV !== "development") {
       fetch(`/api/views/${slug}`, {
@@ -59,33 +66,54 @@ export default function PostPage({ source, frontMatter }) {
       <header>
         <nav>
           <Link href="/posts">
-            <a>
-              👈 <span style={{ marginLeft: "4px" }}>Go back</span>
+            <a
+              style={{ display: "flex", alignItems: "center" }}
+              onMouseOver={() => setHoverEffect(true)}
+              onMouseLeave={() => setHoverEffect(false)}
+            >
+              <motion.div
+                animate={hoverEffect ? { translateX: -5 } : { translateX: 0 }}
+              >
+                <BiArrowBack />
+              </motion.div>
+              <span style={{ marginLeft: "4px" }}>Go back</span>
             </a>
           </Link>
         </nav>
       </header>
       <Box className="post-header" my="2rem">
-        <Text fontSize="2xl">📓 {frontMatter.title}</Text>
+        <Text fontSize="2rem" my={4} fontWeight={600} lineHeight={1.6}>
+          📓 {frontMatter.title}
+        </Text>
         {frontMatter.description && (
-          <Text color={descriptionCol}>{frontMatter.description}</Text>
+          <Text my={2} color={descriptionCol}>
+            {frontMatter.description}
+          </Text>
         )}
-        {frontMatter.publishedOn && (
-          <Box d="flex" my={2}>
-            <Box d="flex" alignItems="center" fontSize="sm">
-              <BiCalendarWeek />
-              <Text ml={1}>
-                {moment(frontMatter.publishedOn).format("D MMM YY")}
-              </Text>
-            </Box>
-            {!error && (
-              <Box ml={4} d="flex" alignItems="center" fontSize="sm">
-                <RiEyeCloseLine />
-                <Text ml={1}>{!data?.total ? "..." : data?.total}</Text>
+        <Box d="flex" fontSize="sm">
+          {frontMatter.publishedOn && (
+            <Box d="flex" my={2}>
+              <Box d="flex" alignItems="center">
+                <BiCalendarWeek />
+                <Text ml={1}>
+                  {moment(frontMatter.publishedOn).format("D MMM, YYYY")}
+                </Text>
               </Box>
-            )}
-          </Box>
-        )}
+              {!error && (
+                <Box ml={8} d="flex" alignItems="center">
+                  <RiEyeCloseLine />
+                  <Text ml={1}>{!data?.total ? "..." : data?.total}</Text>
+                </Box>
+              )}
+            </Box>
+          )}
+          {source.compiledSource && (
+            <Box ml={8} d="flex" my={2} alignItems="center">
+              <AiOutlineClockCircle />
+              <Box ml={1}>{readingTime(source.compiledSource)?.text}</Box>
+            </Box>
+          )}
+        </Box>
       </Box>
       <Box className="post-body">
         <MDXRemote {...source} components={components} />
